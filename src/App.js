@@ -1,25 +1,28 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
 
 class App extends Component {
   render() {
+    const text = '제가';
+    const condition = true;
+    const style = {
+      backgroundColor: 'grey',
+      border: '1px solid black',
+      height: Math.round(Math.random() * 300) + 50,
+      width: Math.round(Math.random() * 300) + 50,
+      WebitTransition:'all',
+      MozTransition:'all',
+      msTransition:'all'
+    }
+
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+      <h1> 리액트 안녕하세요! </h1>
+      <h2> 리액트를 {text} 처음개발했습니다 </h2>
+      {
+         condition && '보여주세요'
+      }
+      <div style={style}></div>
       </div>
     );
   }
