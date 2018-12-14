@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './App.css';
 
 class App extends Component {
   render() {
@@ -16,7 +17,7 @@ class App extends Component {
 
 
     return (
-      <div>
+      <div class="my-div">
       <h1> 리액트 안녕하세요! </h1>
       <h2> 리액트를 {text} 처음개발했습니다 </h2>
       {
