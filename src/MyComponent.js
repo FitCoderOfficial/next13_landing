@@ -1,8 +1,12 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types';
 
 class MyComponent extends Component {
   static defaultProps = {
-    name : "기본이름"
+    name : "기본이름"  
+  }
+  static propTypes = {
+    name : PropTypes.string
   }
 
   render() {
@@ -14,4 +18,7 @@ class MyComponent extends Component {
   }
 }
 
+MyComponent.propTypes = {
+    name: PropTypes.string
+  }
 export default MyComponent;

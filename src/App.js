@@ -18,8 +18,8 @@ class App extends Component {
 
 
     return (
-      <div class="my-div">
-      <MyComponent />
+      <div className="my-div">
+      <MyComponent name="React"/>
       <h1> 리액트 안녕하세요! </h1>
       <h2> 리액트를 {text} 처음개발했습니다 </h2>
       {
