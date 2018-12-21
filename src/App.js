@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import MyComponent from './MyComponent';
+import EventPractice from './EventPractice';
 
 class App extends Component {
   render() {
@@ -26,6 +27,8 @@ class App extends Component {
          condition && '보여주세요'
       }
       <div style={style}></div>
+
+      <EventPractice/>
       </div>
     );
   }
