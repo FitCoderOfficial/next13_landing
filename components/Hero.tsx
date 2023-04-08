@@ -4,8 +4,8 @@ import Image from "next/image"
 import CustomButton from "./CustomButton"
 
 const Hero = () => {
-    const handlScroll = () => { 
-    
+    const handlScroll = () => {
+
     }
 
 
@@ -19,12 +19,17 @@ const Hero = () => {
                     하루에 먹은 칼로리를 계산하고 측정해보세요
                 </p>
 
-                <CustomButton 
+                <CustomButton
                     title="찾아보기"
                     containerStyles="bg-primary-blue text-white mt-10 rounded-full"
-                    handleClick={handlScroll}  
-
-                    />
+                    handleClick={handlScroll}
+                />
+                <div className="hero__image-container">
+                    <div className="hero__image">
+                        <Image src="/hero.png" alt="hero" fill className="object-contain" />
+                        <div className="hero__image-overlay" />
+                    </div>
+                </div>
             </div>
         </div>
     )
