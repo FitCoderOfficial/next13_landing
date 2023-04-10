@@ -1,7 +1,15 @@
-import { CustomFilter, Hero, SearchBar } from '@/components'
+import { CustomFilter, Hero, SearchBar, StuffCard } from '@/components'
+import { fetchData } from '@/utils'
 import Image from 'next/image'
 
-export default function Home() {
+
+export default async function Home() {
+
+  const allStuffs = await fetchData()
+
+  const isDataEmpy = !Array.isArray(allStuffs) || allStuffs.length < 1 || !allStuffs;
+
+
   return (
     <main className="overflow-hidden">
       <Hero />
@@ -18,6 +26,21 @@ export default function Home() {
             <CustomFilter title="year" />
           </div>
         </div>
+
+        { !isDataEmpy ? (
+          <section>
+            <div className='home__cars-wrapper'>
+              {allStuffs?.map((item) => (
+                <StuffCard item={item} />
+              ))}
+            </div>
+          </section>
+        ) : (
+          <div className='home__error-container'>
+           <h2 className='text-black text-xl font-bold'>해당 항목이 없습니다</h2> 
+           <p>{allStuffs?.message}</p>
+          </div>
+        )}
 
       </div>
     </main>

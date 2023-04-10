@@ -24,7 +24,7 @@ const SearchFood = ({ Food, setFood }: SearchFoodProps) => {
 
     return (
         <div className='search-manufacturer'>
-            <Combobox>
+            <Combobox value={Food} onChange={setFood}>
                 <div className='relative w-full'>
                     <Combobox.Button className='absolute top-[14px]'>
                         <Image src="/car-logo.svg"
@@ -50,16 +50,7 @@ const SearchFood = ({ Food, setFood }: SearchFoodProps) => {
 
 
                         <Combobox.Options>
-                            {filteredFood.length === 0 &&
-                                query !== "" ? (
-                                <Combobox.Option
-                                    value={query}
-                                    className='search-manufacturer__option'
-                                >
-                                    create "{query}"
-
-                                </Combobox.Option>
-                            ) : (
+                            {
                                 filteredFood.map((item) => (
                                     <Combobox.Option
                                         key={item}
@@ -69,12 +60,22 @@ const SearchFood = ({ Food, setFood }: SearchFoodProps) => {
                                         }
                                         value={item}
                                     >
+                                        {({ selected, active }) => (
+                                            <>
+                                                <span className={`block truncate ${selected ? "font-medium" : "font-normal"}`}>
+                                                    {item}
+                                                </span>
 
-
-                                        {item}
+                                                {/* Show an active blue background color if the option is selected */}
+                                                {selected ? (
+                                                    <span className={`absolute inset-y-0 left-0 flex items-center pl-3 ${active ? "text-white" : "text-pribg-primary-purple"}`}
+                                                    ></span>
+                                                ) : null}
+                                            </>
+                                        )}
                                     </Combobox.Option>
                                 ))
-                            )
+
                             }
                         </Combobox.Options>
                     </Transition>

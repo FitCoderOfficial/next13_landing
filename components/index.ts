@@ -5,6 +5,7 @@ import Footer from './Footer';
 import SearchBar from './SearchBar';
 import CustomFilter from './CustomFilter';
 import SearchFood from './SearchFood';
+import StuffCard from './StuffCard';
 
 
 export {
@@ -15,4 +16,5 @@ export {
     SearchBar,
     CustomFilter,
     SearchFood,
+    StuffCard,
 }
