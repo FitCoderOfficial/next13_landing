@@ -31,6 +31,21 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+
+    # 3rd party
+    'drf_yasg',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'dj_rest_auth',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'dj_rest_auth.registration',
+    'django_filters',
+
+    # local
+    "authentication",
 ]
 
 MIDDLEWARE = [
@@ -121,6 +136,32 @@ STATICFILES_DIRS = [ BASE_DIR / "static" ]
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+REST_FRAMEWORK = {
+               'DEFAULT_PERMISSION_CLASSES': (
+               'rest_framework.permissions.AllowAny',
+               ),
+               'DEFAULT_AUTHENTICATION_CLASSES': (
+                'rest_framework.authentication.TokenAuthentication',
+                ),
+               'DEFAULT_PAGINATION_CLASS' : 'rest_framework.pagination.PageNumberPagination',
+               'PAGE_SIZE':3,
+  }
+
+AUTH_USER_MODEL = 'authentication.User'
+
+#JWT 사용 여부
+REST_USE_JWT = True
+#호출할 Cookie Key값
+JWT_AUTH_COOKIE = 'my-app-auth'
+#Refresh Token Cookie Key 값 (사용하는 경우)
+JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
+
+SITE_ID = 1
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
 
 # 
 if DEBUG is False:
