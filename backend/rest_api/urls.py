@@ -10,6 +10,7 @@ from drf_yasg import openapi
 
 schema_url_patterns = [ 
     path('authentication/', include('authentication.urls')),
+    path('', include('items.api.urls')),
     ]
 
 schema_view = get_schema_view(
@@ -31,6 +32,7 @@ urlpatterns = [
 
     path('admin/', admin.site.urls),
     path('api/authentication/', include('authentication.urls')),
+    path('api/food/', include('items.api.urls')),
     ]
 
 
