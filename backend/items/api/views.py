@@ -1,5 +1,5 @@
-from .serializer import FoodSerializer
-from items.models import Food
+from .serializer import FoodSerializer, FoodChoiceSerializer
+from items.models import Food, Food_Choise
 from rest_framework.viewsets import ModelViewSet, GenericViewSet
 from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.pagination import PageNumberPagination
@@ -7,6 +7,14 @@ from rest_framework.mixins import CreateModelMixin, RetrieveModelMixin
 from django_filters.rest_framework import DjangoFilterBackend
 from .filters import FoodFilter
 
+
+class FoodChoiceViewSet(ModelViewSet):
+    queryset = Food_Choise.objects.all()
+    serializer_class = FoodChoiceSerializer
+    pagenations_class = PageNumberPagination    
+
+    
+    
 
 class FoodViewSet(ModelViewSet):
     queryset = Food.objects.all()

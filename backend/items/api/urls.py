@@ -5,7 +5,8 @@ from rest_framework.routers import DefaultRouter
 from rest_framework_nested import routers
 
 router = routers.DefaultRouter()
-router.register("food_upload", views.FoodViewSet)
+router.register("upload", views.FoodViewSet)
+router.register("foodchoice", views.FoodChoiceViewSet)
 
 
 

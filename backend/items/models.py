@@ -1,6 +1,16 @@
 from django.db import models
+from authentication.models import User
+
+class Food_Choise(models.Model):
+    user = models.ForeignKey(User, related_name='food_choise', on_delete=models.CASCADE)
+    food = models.ForeignKey('Food', related_name='food_choise', on_delete=models.CASCADE)
+    quantity = models.IntegerField(blank=True, null=True)
+    date = models.DateField(auto_now_add=True)
+
+
 
 class Food(models.Model):
+    image = models.ImageField(upload_to='media/images/', blank=True, null=True)
     NO = models.IntegerField(blank=True, null=True)
     SAMPLE_ID = models.IntegerField(blank=True, null=True)
     Food_Code = models.IntegerField(blank=True, null=True)

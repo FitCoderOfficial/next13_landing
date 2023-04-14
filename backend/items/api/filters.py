@@ -2,11 +2,13 @@ from django_filters import rest_framework as filters
 from ..models import Food
 
 
-
+class CustomImageFieldFilter(filters.BaseCSVFilter, filters.CharFilter):
+    pass
 
 # Defining FilterSet for the Food model
 class FoodFilter(filters.FilterSet):
     # Each field in the model can be used as a filter
+    image = CustomImageFieldFilter(field_name='image', lookup_expr='exact')
     NO = filters.NumberFilter(field_name='NO')
     SAMPLE_ID = filters.NumberFilter(field_name='SAMPLE_ID')
     Food_Code = filters.NumberFilter(field_name='Food_Code')
@@ -31,7 +33,11 @@ class FoodFilter(filters.FilterSet):
     class Meta:
         model = Food
         fields = '__all__'  # This allows filtering by every field in the model
-
+        filter_overrides = {
+            Food._meta.get_field('image'): {
+                'filter_class': CustomImageFieldFilter,
+            },
+        }
 
 # food_list = Food.objects.all()
 
